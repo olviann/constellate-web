@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Design by foolishdeveloper.com -->
-    <title>Signup Page</title>
+ 
+    <title>SIGN UP</title>
  
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
-    <!--Stylesheet-->
     <style media="screen">
       *,
 *:before,
@@ -17,7 +16,7 @@
     box-sizing: border-box;
 }
 body{
-    background-color: #080710;
+    background-color: #615b8e;
 }
 .background{
     width: 430px;
@@ -33,27 +32,11 @@ body{
     position: absolute;
     border-radius: 50%;
 }
-.shape:first-child{
-    background: linear-gradient(
-        #1845ad,
-        #23a2f6
-    );
-    left: -80px;
-    top: -80px;
-}
-.shape:last-child{
-    background: linear-gradient(
-        to right,
-        #ff512f,
-        #f09819
-    );
-    right: -30px;
-    bottom: -80px;
-}
+
 form{
     height: 600px;
     width: 450px;
-    background-color: rgba(255,255,255,0.13);
+    background-color: rgba(193, 150, 227, 0.13);
     position: absolute;
     transform: translate(-50%,-50%);
     top: 50%;
@@ -141,23 +124,23 @@ button{
     </div>
     <form action="" method="post">
         {% csrf_token %} 
-        <h3>Signup Here</h3>
+        <h3>SIGN UP</h3>
 
-        <label for="username">Username</label>
+        <label for="username">USERNAME</label>
         <input type="text" placeholder="Username" name="username" id="username">
 
-        <label for="email">Email</label>
-        <input type="email" placeholder="Email or Phone" name="email" id="email">
+        <label for="email">EMAIL</label>
+        <input type="email" placeholder="Email" name="email" id="email">
 
-        <label for="password1">Password</label>
+        <label for="password1">PASSWORD</label>
         <input type="password" placeholder="Password" id="password1" name="password1">
 
 
-        <label for="password2">Confrom Password</label>
-        <input type="password" placeholder="Confrom Password" id="password2" name="password2">
-        <button type="submit">Signup</button>
+        <label for="password2">CONFIRM PASSWORD</label>
+        <input type="password" placeholder="Confirm password" id="password2" name="password2">
+        <button type="submit">Sign up</button>
         
-        <a href="{% url 'login' %}" >i have already account</a>
+        <a href="{%url 'login' %}" >I already have an account</a>
     </form>
 </body>
 </html>
