@@ -1,9 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
- 
-    <title>LOGIN</title>
- 
+    <section class="section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-10">
+
+                    {% for msg in messages %}
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <strong><p style="color:rgb(255, 255, 255);text-align:center;font-family: monospace;">Incorrect user/password</p></strong>
+                    
+                     {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <title>constellate</title>
+    
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
@@ -48,7 +62,7 @@ form{
     padding: 50px 35px;
 }
 form *{
-    font-family: 'Poppins',sans-serif;
+    font-family: monospace;
     color: #ffffff;
     letter-spacing: 0.5px;
     outline: none;
@@ -138,6 +152,7 @@ button{
           <div class="fb"><i class="fab fa-facebook"></i>  Facebook</div>
         </div> -->
         <a href="{%url 'signup' %}" >Create an account?</a>
+        
     </form>
 </body>
 </html>

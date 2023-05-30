@@ -3,6 +3,8 @@ from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+
 @login_required(login_url='login')
 def HomePage(request):
     #return render(request, 'users/home.html') #aici am template la .html
@@ -16,7 +18,8 @@ def SignupPage(request):
         pass2=request.POST.get('password2')
         
         if pass1!=pass2:
-            return HttpResponse("Passwords do not match")
+            messages.success(request,"Passwords do not match")
+            return render(request, 'signup.html', data)
         else:
             my_user=User.objects.create_user(uname, email, pass1)
             my_user.save()
@@ -32,7 +35,7 @@ def LoginPage(request):
             login(request,user)
             return redirect('home')
         else:
-            return HttpResponse("Incorrect username/password")
+            messages.info(request,"Incorrect username/password")
 
     return render(request, 'login.html')
 

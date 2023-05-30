@@ -1,8 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
- 
-    <title>SIGN UP</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+    <section class="section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-10">
+
+                    {% for msg in messages %}
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <strong><p style="color:rgb(255, 255, 255);text-align:center;font-family: monospace;">Passwords do not match</p></strong>
+                    
+                     {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <title>constellate</title>
  
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -15,6 +30,7 @@
     margin: 0;
     box-sizing: border-box;
 }
+
 body{
     background-color: #615b8e;
 }
@@ -25,12 +41,6 @@ body{
     transform: translate(-50%,-50%);
     left: 50%;
     top: 50%;
-}
-.background .shape{
-    height: 200px;
-    width: 200px;
-    position: absolute;
-    border-radius: 50%;
 }
 
 form{
@@ -48,7 +58,7 @@ form{
     padding: 50px 35px;
 }
 form *{
-    font-family: 'Poppins',sans-serif;
+    font-family: monospace;
     color: #ffffff;
     letter-spacing: 0.5px;
     outline: none;
@@ -115,14 +125,18 @@ button{
   margin-right: 4px;
 }
 
-    </style>
+</style>
 </head>
+<script src="{%% static 'vendor/jquery/jquery.min.js' }"></script>
+<script src="{%% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' }"></script>
+<script src="{%% static 'vendor/jquery-easing/jquery.easing.min.js' }"></script>
+<script src="{%% static 'js/sb-admin-2.min.js' }"></script>
 <body>
     <div class="background">
         <div class="shape"></div>
         <div class="shape"></div>
     </div>
-    <form action="" method="post">
+     <form action="" method="post">
         {% csrf_token %} 
         <h3>SIGN UP</h3>
 
@@ -142,5 +156,7 @@ button{
         
         <a href="{%url 'login' %}" >I already have an account</a>
     </form>
+   
+
 </body>
 </html>
