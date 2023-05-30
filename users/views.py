@@ -19,7 +19,6 @@ def SignupPage(request):
         
         if pass1!=pass2:
             messages.success(request,"Passwords do not match")
-            return render(request, 'signup.html', data)
         else:
             my_user=User.objects.create_user(uname, email, pass1)
             my_user.save()
