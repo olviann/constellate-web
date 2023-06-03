@@ -4,10 +4,35 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from datetime import date, datetime
+import pytz
+from geopy.geocoders import ArcGIS
+from geopy.geocoders import Nominatim
+
 
 @login_required(login_url='login')
 def HomePage(request):
-    #return render(request, 'users/home.html') #aici am template la .html
+    if request.method=='POST':
+        input_birthdate=request.POST.get('date')
+        input_birthtime=request.POST.get('time')
+        input_birthplace=request.POST.get('place')
+        
+        str_date_time = input_birthdate + ' ' + input_birthtime
+        dt_date_time=datetime.strptime(str_date_time, '%d/%m/%Y %H:%M')
+
+        locator = Nominatim(user_agent="myGeocoder")
+        location = locator.geocode(input_birthplace)
+        print("Latitude = {}, Longitude = {}".format(location.latitude, location.longitude))
+        print('Time in LOCAL time zone: ', dt_date_time)
+        utc_dt = dt_date_time.astimezone(pytz.utc)
+        print('Time in UTC time zone: ', utc_dt)
+        def valDate(input):
+            try:
+                dt_date_time=datetime.strptime(str_date_time, '%d/%m/%Y %H:%M')
+                location = locator.geocode(input_birthplace)
+                return True
+            except: 
+                return messages.success(request,"Enter correct data format")
     return render(request, 'home.html')
 
 def SignupPage(request):
@@ -41,3 +66,12 @@ def LoginPage(request):
 def LogoutPage(request):
     logout(request)
     return redirect('login')
+
+def handler400(request, exception):
+    return (render(request, "400.html", status=400))
+def handler403(request, exception):
+    return (render(request, "403.html", status=403))
+def handler404(request, exception):
+    return (render(request, "404.html", status=404))
+def handler500(request):
+    return (render(request, "500.html", status=500))

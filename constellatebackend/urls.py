@@ -19,7 +19,6 @@ admin.autodiscover()
 from django.urls import path, include
 from users import views
 
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('users/',include('users.urls')),
@@ -30,3 +29,8 @@ urlpatterns = [
 
     #any urls starting with playground should be routed to our playground app so its going to chopp off playground
 ]
+
+handler400 = 'users.views.handler400'
+handler403 = 'users.views.handler403'
+handler404 = 'users.views.handler404'
+handler500 = 'users.views.handler500'
