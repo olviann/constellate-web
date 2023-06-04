@@ -26,6 +26,7 @@ urlpatterns = [
     path('login/',views.LoginPage,name='login'),
     path('home/',views.HomePage,name='home'),
     path('logout/',views.LogoutPage,name='logout'),
+    path('results/',views.ResultsPage,name='results'),
 
     #any urls starting with playground should be routed to our playground app so its going to chopp off playground
 ]

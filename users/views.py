@@ -8,6 +8,7 @@ from datetime import date, datetime
 import pytz
 from geopy.geocoders import ArcGIS
 from geopy.geocoders import Nominatim
+from kerykeion import print_all_data, KrInstance
 
 
 @login_required(login_url='login')
@@ -26,13 +27,24 @@ def HomePage(request):
         print('Time in LOCAL time zone: ', dt_date_time)
         utc_dt = dt_date_time.astimezone(pytz.utc)
         print('Time in UTC time zone: ', utc_dt)
-        def valDate(input):
-            try:
-                dt_date_time=datetime.strptime(str_date_time, '%d/%m/%Y %H:%M')
-                location = locator.geocode(input_birthplace)
-                return True
-            except: 
-                return messages.success(request,"Enter correct data format")
+        calculations = KrInstance(" ",dt_date_time.year, dt_date_time.month, dt_date_time.day,
+                             dt_date_time.hour,dt_date_time.minute,input_birthplace, location.latitude, location.longitude)
+        sun_sign = getattr(calculations.sun,"sign" )
+        moon_sign = getattr(calculations.moon,"sign" )
+        mercury_sign = getattr(calculations.mercury,"sign" )
+        venus_sign = getattr(calculations.venus,"sign" )
+        mars_sign = getattr(calculations.mars,"sign" )
+        jupiter_sign = getattr(calculations.jupiter,"sign" )
+        saturn_sign = getattr(calculations.saturn,"sign" )
+        print(sun_sign)
+        print(moon_sign)
+        print(mercury_sign)
+        print(venus_sign)
+        print(mars_sign)
+        print(jupiter_sign)
+        print(saturn_sign)
+        #print_all_data(calculations)
+
     return render(request, 'home.html')
 
 def SignupPage(request):
@@ -75,3 +87,16 @@ def handler404(request, exception):
     return (render(request, "404.html", status=404))
 def handler500(request):
     return (render(request, "500.html", status=500))
+
+def ResultsPage(request):
+    #cls  = joblib.load('finalized_model.sav')
+    #planets = []
+    #planets.append()
+    #
+    #
+    #
+    #
+    #
+    #
+    #
+    return render (request, 'results.html')
