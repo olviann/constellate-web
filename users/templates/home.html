@@ -36,7 +36,7 @@
     box-sizing: border-box;
 }
 body{
-    background-color: #615b8e;
+    background-color: #705697;
 }
 .background{
     width: 430px;
@@ -45,12 +45,6 @@ body{
     transform: translate(-50%,-50%);
     left: 50%;
     top: 50%;
-}
-.background .shape{
-    height: 200px;
-    width: 200px;
-    position: absolute;
-    border-radius: 50%;
 }
 
 form{
@@ -89,12 +83,12 @@ label{
 }
 input{
     display: block;
-    height: 50px;
+    height: 40px;
     width: 100%;
     background-color: rgba(255,255,255,0.07);
     border-radius: 3px;
     padding: 0 10px;
-    margin-top: 8px;
+    margin-top: 2px;
     font-size: 14px;
     font-weight: 300;
 }
@@ -102,7 +96,7 @@ input{
     color: #e5e5e5;
 }
 button{
-    margin-top: 50px;
+    margin-top: 14px;
     width: 100%;
     background-color: #ffffff;
     color: #080710;
@@ -139,24 +133,22 @@ button{
 </head>
 <body>
     <div class="background">
-        <div class="shape"></div>
-        <div class="shape"></div>
     </div>
     <form method="post">
         <h3>ENTER DETAILS</h3>
         {% csrf_token %} 
+        <label for="username">NAME</label>
+        <input type="text" placeholder="My name is..." id="name" name="name">
+
         <label for="username">BIRTHDATE(dd/mm/yyyy)</label>
-        <input type="text" placeholder="Enter birthdate. Example 19/05/2001" id="date" name="date">
+        <input type="text" placeholder="Example 19/05/2001" id="date" name="date">
 
         <label for="username">BIRTHTIME(hh24:mm)</label>
-        <input type="text" placeholder="Enter birthtime. Example 09:23" id="time" name="time">
+        <input type="text" placeholder="Example 09:23" id="time" name="time">
          
         <label for="username">BIRTHPLACE</label>
         <input type="text" placeholder="Enter birthplace" id="place" name="place">
         
-
-        
-
         <button type="submit">Calculate</button>
         <!-- <input type="button" value=""> -->
         <!-- <div class="social">

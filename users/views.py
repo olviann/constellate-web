@@ -9,25 +9,25 @@ import pytz
 from geopy.geocoders import ArcGIS
 from geopy.geocoders import Nominatim
 from kerykeion import print_all_data, KrInstance
-
+from django.urls import reverse
+from .models import Client
 
 @login_required(login_url='login')
 def HomePage(request):
     if request.method=='POST':
+        input_name=request.POST.get('name')
         input_birthdate=request.POST.get('date')
         input_birthtime=request.POST.get('time')
         input_birthplace=request.POST.get('place')
-        
         str_date_time = input_birthdate + ' ' + input_birthtime
         dt_date_time=datetime.strptime(str_date_time, '%d/%m/%Y %H:%M')
-
         locator = Nominatim(user_agent="myGeocoder")
         location = locator.geocode(input_birthplace)
-        print("Latitude = {}, Longitude = {}".format(location.latitude, location.longitude))
-        print('Time in LOCAL time zone: ', dt_date_time)
+        #print("Latitude = {}, Longitude = {}".format(location.latitude, location.longitude))
+        #print('Time in LOCAL time zone: ', dt_date_time)
         utc_dt = dt_date_time.astimezone(pytz.utc)
-        print('Time in UTC time zone: ', utc_dt)
-        calculations = KrInstance(" ",dt_date_time.year, dt_date_time.month, dt_date_time.day,
+        #print('Time in UTC time zone: ', utc_dt)
+        calculations = KrInstance(input_name,dt_date_time.year, dt_date_time.month, dt_date_time.day,
                              dt_date_time.hour,dt_date_time.minute,input_birthplace, location.latitude, location.longitude)
         sun_sign = getattr(calculations.sun,"sign" )
         moon_sign = getattr(calculations.moon,"sign" )
@@ -36,16 +36,15 @@ def HomePage(request):
         mars_sign = getattr(calculations.mars,"sign" )
         jupiter_sign = getattr(calculations.jupiter,"sign" )
         saturn_sign = getattr(calculations.saturn,"sign" )
-        print(sun_sign)
-        print(moon_sign)
-        print(mercury_sign)
-        print(venus_sign)
-        print(mars_sign)
-        print(jupiter_sign)
-        print(saturn_sign)
-        #print_all_data(calculations)
-
-    return render(request, 'home.html')
+        
+        Profile_instance = Client.objects.create(name = input_name, birth_date = input_birthdate, birth_time= input_birthtime, birth_place = input_birthplace,
+                                        sun = sun_sign, moon=moon_sign, mercury=mercury_sign,venus=venus_sign,mars=mars_sign,jupiter=jupiter_sign,saturn=saturn_sign)
+        print(sun_sign, moon_sign, mercury_sign, venus_sign, mars_sign, jupiter_sign, saturn_sign)
+        print(Profile_instance)
+        #sign_of_planets = (sun_sign, moon_sign, mercury_sign, venus_sign, mars_sign, jupiter_sign, saturn_sign)
+        return render(request, 'results.html')
+    else:
+     return render(request, 'home.html')
 
 def SignupPage(request):
     if request.method=='POST':
@@ -79,24 +78,19 @@ def LogoutPage(request):
     logout(request)
     return redirect('login')
 
+def ResultsPage(request):
+    #parsed_sign_of_planets = request.session['sign_of_planets']
+    #print(sign_of_planets)
+    return render (request, 'results.html')
+
 def handler400(request, exception):
     return (render(request, "400.html", status=400))
+
 def handler403(request, exception):
     return (render(request, "403.html", status=403))
+
 def handler404(request, exception):
     return (render(request, "404.html", status=404))
+
 def handler500(request):
     return (render(request, "500.html", status=500))
-
-def ResultsPage(request):
-    #cls  = joblib.load('finalized_model.sav')
-    #planets = []
-    #planets.append()
-    #
-    #
-    #
-    #
-    #
-    #
-    #
-    return render (request, 'results.html')
