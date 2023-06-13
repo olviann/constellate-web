@@ -23,10 +23,7 @@ def HomePage(request):
         dt_date_time=datetime.strptime(str_date_time, '%d/%m/%Y %H:%M')
         locator = Nominatim(user_agent="myGeocoder")
         location = locator.geocode(input_birthplace)
-        #print("Latitude = {}, Longitude = {}".format(location.latitude, location.longitude))
-        #print('Time in LOCAL time zone: ', dt_date_time)
         utc_dt = dt_date_time.astimezone(pytz.utc)
-        #print('Time in UTC time zone: ', utc_dt)
         calculations = KrInstance(input_name,dt_date_time.year, dt_date_time.month, dt_date_time.day,
                              dt_date_time.hour,dt_date_time.minute,input_birthplace, location.latitude, location.longitude)
         sun_sign = getattr(calculations.sun,"sign" )
@@ -36,13 +33,11 @@ def HomePage(request):
         mars_sign = getattr(calculations.mars,"sign" )
         jupiter_sign = getattr(calculations.jupiter,"sign" )
         saturn_sign = getattr(calculations.saturn,"sign" )
-        
-        Profile_instance = Client.objects.create(name = input_name, birth_date = input_birthdate, birth_time= input_birthtime, birth_place = input_birthplace,
-                                        sun = sun_sign, moon=moon_sign, mercury=mercury_sign,venus=venus_sign,mars=mars_sign,jupiter=jupiter_sign,saturn=saturn_sign)
-        print(sun_sign, moon_sign, mercury_sign, venus_sign, mars_sign, jupiter_sign, saturn_sign)
-        print(Profile_instance)
-        #sign_of_planets = (sun_sign, moon_sign, mercury_sign, venus_sign, mars_sign, jupiter_sign, saturn_sign)
-        return render(request, 'results.html')
+        Profile_instance = Client.objects.all()
+        client = {
+            "name": Profile_instance
+        }
+        return render(request, 'results.html', client)
     else:
      return render(request, 'home.html')
 
