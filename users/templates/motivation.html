@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Century Gothic, sans-serif;
+}
+html{
+    height: 100%;
+    box-sizing: border-box;
+}
+
+body {
+    position: relative;
+    margin: 0;
+    min-height: 100%;
+    padding-bottom: 0rem;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    box-sizing: inherit;
+}
+
+.container {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #f3f5f8;
+}
+
+nav{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    height: 80px;
+    line-height: 80px;
+    z-index: 111;
+    background-color: #fff;
+}
+
+.logo{
+display: flex;
+font-size: 40px;
+font-weight: 800;
+color: #705697;
+letter-spacing: 3px;
+cursor: pointer;
+text-transform: uppercase;
+}
+
+.navItems{
+display:flex;
+}
+
+.navItems li{
+    list-style: none;
+    margin: 0 15px;
+}
+.navItems li a{
+    font-size: 25px;
+    color: #070606;
+    letter-spacing: 3px;
+    text-decoration: none;
+    text-transform: capitalize;
+
+}
+
+.navItems li:hover a{
+    color: #705697;
+}
+
+.content .main-content{
+        background: rgb(255, 255, 255);
+        padding: 20px 50px;
+        font-size: 1.1em;
+        border-radius: 5px;
+    }
+
+.content .main-content .post-title{
+        text-align: center;
+        margin-bottom: 40px;
+        padding-top: 10px;
+}
+
+.page-wrapper{
+    margin-top: 50px;
+    margin-left: 300px;
+    margin-right: 300px;
+}
+
+</style>
+<head>
+    <title>constellate</title>
+</head>
+<body>
+    
+    
+    <div class="container">
+        <nav>
+            <div class="logo">Constellate<b>.</b></div>
+            <ul class="navItems">
+                <li><a href="{{ button5_url }}">{{ button5_text }}</a></li>
+                <li><a href="{{ button3_url }}">{{ button3_text }}</a></li>
+                <li><a href="{{ button4_url }}">{{ button4_text }}</a></li>
+            </ul>
+        </nav>
+        
+        <div class="page-wrapper">
+            <div class="content clearfix">
+                <div class= "main-content">
+                    <h1 class = "post-title">The motivation of Constellate</h1>
+                    <div class="post-content">
+                        <p>Astrology is the type of knowledge that presents itself to you based on how ready you are to hear it. Many times, the same interpretation I’ve read 1 year ago only starts making a lot more sense after being re-read some time afterwards, because this practice works on a deeper level of consciousness.
+                        </p>
+                        <br>
+                        <p>I was introduced to astrology in 2020, during the pandemic, when so many of us had a little more time to spend with ourselves, time seemed to stop a little, we finally could catch a break from the “What am I going to do next?”, “I have work to do all day long”. Distractions seemed to be diminished.
+                        </p>
+                        <br>
+                        <p>The first time I read my chart interpretation from The Pattern, I was stunned. A part of me always longed to be understood and deeply craved to feel seen.
+                            Reading the paragraphs, I was given a “why”, I was given a reason for life experiences that I didn’t even dare look back, let alone try to find value in them, but The Pattern did exactly that, it explained me how the patterns that played out in my life created energy that I can use in various manners, to take care of myself.
+                            </p>
+                            <br>
+                        <p>Astrology is a very vast domain, there's plenty of astrology specialization that really go deep into the psyche and consciousness. It can represent a beautiful journey of self-discovery, because sometimes we associate our identity so much with our job or our duties that we think that’s all we are. Turns out we are far more complex beings, with deep layers to each of us. Layers that make us, us. Ourselves. Authentic. So different from other human beings, yet being one with everyone and everything. Similar experiences shape us similarly. 
+                            After all, we are all human beings.
+                            </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+   
+</body>
+</html>

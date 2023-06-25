@@ -22,13 +22,18 @@ from users import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('users/',include('users.urls')),
-    path('',views.SignupPage,name='signup'),
+    path('signup/',views.SignupPage,name='signup'),
     path('login/',views.LoginPage,name='login'),
     path('home/',views.HomePage,name='home'),
     path('logout/',views.LogoutPage,name='logout'),
     path('results/',views.ResultsPage,name='results'),
+    path('',views.IntroPage,name='intro'),
+    path('discover/',views.DiscoverPage,name='discover'),
+    path('motivation/',views.MotivationPage,name='motivation'),
+    path('account/',views.AccountPage,name='account'),
+    path('myprofile/',views.ProfilePage,name='myprofile')
 
-    #any urls starting with playground should be routed to our playground app so its going to chopp off playground
+   
 ]
 
 handler400 = 'users.views.handler400'

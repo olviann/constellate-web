@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Century Gothic, sans-serif;
+}
+html{
+    height: 100%;
+    box-sizing: border-box;
+}
+
+body {
+    position: relative;
+    margin: 0;
+    min-height: 100%;
+    padding-bottom: 6.74rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-sizing: inherit;
+}
+
+.container {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #f3f5f8;
+}
+
+nav{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    height: 80px;
+    line-height: 80px;
+    z-index: 111;
+    background-color: #fff;
+}
+.logo{
+display: flex;
+font-size: 40px;
+font-weight: 800;
+color: #705697;
+letter-spacing: 3px;
+cursor: pointer;
+text-transform: uppercase;
+}
+
+.navItems{
+display:flex;
+}
+
+.navItems li{
+    list-style: none;
+    margin: 0 15px;
+}
+.navItems li a{
+    font-size: 25px;
+    color: #070606;
+    letter-spacing: 3px;
+    text-decoration: none;
+    text-transform: capitalize;
+
+}
+
+.navItems li:hover a{
+    color: #705697;
+}
+
+.wrapper{
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    padding: 0 10%;
+    overflow: hidden;
+}
+
+
+.cols{
+    width: 50%;
+}
+
+.cols0{
+    z-index: 5;
+}
+.topline{
+    display: block;
+    position:relative;
+    font-size: 35px;
+    letter-spacing: 5px;
+    color: #070606;
+}
+
+.topline::after{
+    position: absolute;
+    content: '';
+    height: 4px;
+    width: 45px;
+    bottom: 10px;
+    background-color: #705697;
+}
+
+h1{
+    display: block;
+    font-size: 7em;
+    font-weight: 900;
+    color: #070606;
+}
+p{
+    display: block;
+    width: 90%;
+    font-size: 1.2em;
+    color: #070606;
+}
+.btns{
+    width: 100%;
+    position: relative;
+    left: 150px;
+}
+
+button{
+    outline: none;
+    border: none;
+    cursor: pointer;
+    font-size: 25px;
+    font-weight: 400;
+    color: #f3f5f8;
+    background-color: #f3f5f8;
+    padding: 8px 14px;
+    margin: 40px 5px;
+    letter-spacing: 2px;
+    text-transform: capitalize;
+    
+}
+
+button :hover{
+    background-color: #705697;
+
+}
+
+
+</style>
+<head>
+    <title>constellate</title>
+</head>
+<body>
+    
+    <div class="container">
+        <nav>
+            <div class="logo">Constellate<b>.</b></div>
+            <ul class="navItems">
+
+                
+                <li><a href="{{ button2_url }}">{{ button2_text }}</a></li>
+                <li><a href="{{ button3_url }}">{{ button3_text }}</a></li>
+                <li><a href="{{ button4_url }}">{{ button4_text }}</a></li>
+            </ul>
+        </nav>
+        
+        <div class="wrapper">
+            <div class="col cols0">
+                <span class="topline">Welcome to</span>
+                <h1>Constellate</h1>
+                <p>The stars reflect that everyone has in themselves the abilities to navigate life in the ways we choose. Constellate is making sure we stay healthy on the way,
+                    presenting information of astrological health potential and implementing strategies that fit our individual selves. Enjoy.
+                </p>
+                    <div class="btns">
+                        <button><a href="{{ button1_url }}">{{ button1_text }}</a></button>
+                    </div>
+                    
+            </div>
+    </div>
+   
+</body>
+</html>
