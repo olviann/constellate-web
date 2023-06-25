@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+    <section class="section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-10">
+
+                    {% for msg in messages %}
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <strong><p style="color:rgb(255, 255, 255);text-align:center;font-family: monospace;">Passwords do not match</p></strong>
+                    
+                     {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <title>constellate</title>
+    <link rel="icon" href="{% static 'images/sparkles.png' %}">
+ 
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <style media="screen">
+      *,
+*:before,
+*:after{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #705697;
+}
+.background{
+    width: 430px;
+    height: 520px;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    left: 50%;
+    top: 50%;
+}
+
+form{
+    height: 600px;
+    width: 450px;
+    background-color: #ffffff;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255,255,255,0.1);
+    padding: 50px 35px;
+}
+form *{
+    font-family: Century Gothic, sans-serif;
+    color: #070606;
+    letter-spacing: 0.5px;
+    outline: none;
+    border: none;
+}
+form h3{
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 42px;
+    text-align: center;
+}
+
+label{
+    display: block;
+    margin-top: 30px;
+    font-size: 16px;
+    font-weight: 500;
+}
+input{
+    display: block;
+    height: 40px;
+    width: 100%;
+    background-color: rgba(255,255,255,0.07);
+    border-radius: 3px;
+    padding: 0 10px;
+    margin-top: 2px;
+    font-size: 14px;
+    font-weight: 300;
+}
+::placeholder{
+    color: #e5e5e5;
+}
+button{
+    margin-top: 14px;
+    width: 100%;
+    background-color: #f3f5f8;
+    color: #080710;
+    padding: 15px 0;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.social{
+  margin-top: 30px;
+  display: flex;
+}
+.social div{
+  background: red;
+  width: 150px;
+  border-radius: 3px;
+  padding: 5px 10px 10px 5px;
+  background-color: rgba(255,255,255,0.27);
+  color: #eaf0fb;
+  text-align: center;
+}
+.social div:hover{
+  background-color: rgba(255,255,255,0.47);
+}
+.social .fb{
+  margin-left: 25px;
+}
+.social i{
+  margin-right: 4px;
+}
+
+</style>
+</head>
+<script src="{%% static 'vendor/jquery/jquery.min.js' }"></script>
+<script src="{%% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' }"></script>
+<script src="{%% static 'vendor/jquery-easing/jquery.easing.min.js' }"></script>
+<script src="{%% static 'js/sb-admin-2.min.js' }"></script>
+<body>
+    
+    <div class="background">
+        
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+     <form action="" method="post">
+        {% csrf_token %} 
+        <h3>SIGN UP</h3>
+
+        <label for="username">USERNAME</label>
+        <input type="text" placeholder="Username" name="username" id="username">
+
+        <label for="email">EMAIL</label>
+        <input type="email" placeholder="Email" name="email" id="email">
+
+        <label for="password1">PASSWORD</label>
+        <input type="password" placeholder="Password" id="password1" name="password1">
+
+
+        <label for="password2">CONFIRM PASSWORD</label>
+        <input type="password" placeholder="Confirm password" id="password2" name="password2">
+        <button type="submit">Sign up</button>
+        
+        <a href="{%url 'login' %}" >I already have an account</a>
+    </form>
+   
+    
+</body>
+</html>

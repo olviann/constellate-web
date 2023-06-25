@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>constellate</title>
+</head>
+<style>
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Century Gothic, sans-serif;
+}
+html{
+    height: 100%;
+    box-sizing: border-box;
+}
+
+body {
+    position: relative;
+    margin: 0;
+    min-height: 100%;
+    padding-bottom: 0rem;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    box-sizing: inherit;
+}
+
+.container {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #f3f5f8;
+}
+
+nav{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    height: 80px;
+    line-height: 80px;
+    z-index: 111;
+    background-color: #fff;
+}
+
+.logo{
+display: flex;
+font-size: 40px;
+font-weight: 800;
+color: #705697;
+letter-spacing: 3px;
+cursor: pointer;
+text-transform: uppercase;
+}
+
+.navItems{
+display:flex;
+}
+
+.navItems li{
+    list-style: none;
+    margin: 0 15px;
+}
+.navItems li a{
+    font-size: 25px;
+    color: #070606;
+    letter-spacing: 3px;
+    text-decoration: none;
+    text-transform: capitalize;
+
+}
+
+.navItems li:hover a{
+    color: #705697;
+}
+
+.content .main-content{
+        background: rgb(255, 255, 255);
+        padding: 20px 50px;
+        font-size: 1.1em;
+        border-radius: 5px;
+    }
+
+.content .main-content .post-title{
+        text-align: center;
+        margin-bottom: 40px;
+        padding-top: 10px;
+}
+
+.page-wrapper{
+    margin-top: 50px;
+    margin-left: 300px;
+    margin-right: 300px;
+}
+
+.page-wrapper{
+    margin-top: 50px;
+    margin-left: 300px;
+    margin-right: 300px;
+    font-family: Century Gothic, sans-serif;
+    text-align: justify;
+}
+body{
+    background-color: #f3f5f8;
+}
+</style>
+<body>
+    <div class="container">
+        <nav>
+            <div class="logo">Constellate<b>.</b></div>
+            <ul class="navItems">
+                <li><a href="{{ button2_url }}">{{ button2_text }}</li>
+                <li><a href="{{ button3_url }}">{{ button3_text }}</a></li>
+                <li><a href="{{ button4_url }}">{{ button4_text }}</a></li>
+            </ul>
+        </nav>
+    <div class="page-wrapper">
+        <div class="content clearfix">
+            <div class= "main-content">
+                {{ svg_content | safe }}
+                    <div class="post-content">
+                        <p><strong>{{ latest_client.name}}</strong>, the stars aligned and you were born on  {{ latest_client.birth_date }}, at {{ latest_client.birth_time }}</p> 
+                        <p>Your rising sign is             <strong>{{ latest_client.rising }}</strong></p>
+                        <p>Your sun sign is               <strong>{{ latest_client.sun }}</strong></p>
+                        <p>Your moon sign is              <strong>{{ latest_client.moon }}</strong></p>
+                        <p>Your mercury sign is           <strong>{{ latest_client.mercury }}</strong></p>
+                        <p>Your venus sign is             <strong>{{ latest_client.venus }}</strong></p>
+                        <p>Your mars sign is              <strong>{{ latest_client.mars }}</strong></p>
+                        <p>Your jupiter sign is           <strong>{{ latest_client.jupiter }}</strong></p>
+                        <p>Your saturn sign is            <strong>{{ latest_client.saturn }}</strong></p>
+                        <p>You should know that {{ latest_client.sun_rec }} </p>
+                        <p>{{ latest_client.moon_rec }}</p>
+                        <p><strong>The following quotes are your strategy to live a fulfilling life:</strong> 
+                        {{latest_client.true_node_rec}}</p>
+                    </div>
+            </div>
+        </div>
+    </div>
+ 
+   
+</body>
+</html>
