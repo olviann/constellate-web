@@ -1,1 +1,1 @@
-web gunicorn constellatebackend.wgsi:application --log-file - 
+web gunicorn constellatebackend.wgsi --log-file - 
