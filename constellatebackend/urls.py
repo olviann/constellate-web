@@ -31,7 +31,7 @@ urlpatterns = [
     path('discover/',views.DiscoverPage,name='discover'),
     path('motivation/',views.MotivationPage,name='motivation'),
     path('account/',views.AccountPage,name='account'),
-    path('myprofile/',views.ProfilePage,name='myprofile')
+    
 
    
 ]

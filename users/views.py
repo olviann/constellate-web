@@ -24,43 +24,10 @@ def HomePage(request):
         request.session['input_birthdate'] = input_birthdate
         request.session['input_birthtime'] = input_birthtime
         request.session['input_birthplace'] = input_birthplace
-    button1_text = "Discover"
-    button1_url = "/discover/"
-    button2_text = "Motivation"
-    button2_url = "/motivation/"
-    button4_text = "Calculate"
-    button4_url = "/results/"
-    button5_text = "Logout"
-    button5_url = "/login/"
-    context = {
-       'button1_text': button1_text,
-       'button1_url' : button1_url,
-       'button2_text' : button2_text,
-       'button2_url' : button2_url,
-       'button4_text' : button4_text,
-       'button4_url' : button4_url,
-       'button5_text':button5_text,
-       'button5_url':button5_url
-    }
-    return render(request, 'home.html',context)
-    
-
-@login_required(login_url='login')
-def ProfilePage(request):
-    input_name = request.session.get('input_name')
-    input_birthdate = request.session.get('input_birthdate')
-    input_birthtime = request.session.get('input_birthtime')
-    input_birthplace = request.session.get('input_birthplace')
-
-    context = {
-        'name':input_name,
-        'birthdate':input_birthdate,
-        'birthtime':input_birthtime,
-        'birthplace':input_birthplace
-    }
-    return render(request, 'myprofile.html', {'data': context} )
-
-
+        print("home input_birthdate", input_birthdate)
+        return redirect('results')
+    return render(request, 'home.html')
+  
 def IntroPage(request):
     button1_text = "Sign up"
     button1_url = "/signup/"
@@ -208,13 +175,14 @@ def ResultsPage(request):
     input_birthdate = request.session.get('input_birthdate')
     input_birthtime = request.session.get('input_birthtime')
     input_birthplace = request.session.get('input_birthplace')
-    str_date_time = input_birthdate + ' '+ input_birthtime
-    dt_date_time=datetime.strptime(str_date_time, '%d/%m/%Y %H:%M')
+    str_date = str(input_birthdate)
+    str_time = str(input_birthtime)
+    dt_date=datetime.strptime(str_date, '%d/%m/%Y')
+    dt_time=datetime.strptime(str_time, '%H:%M')
     locator = Nominatim(user_agent="myGeocoder")
     location = locator.geocode(input_birthplace)
-    utc_dt = dt_date_time.astimezone(pytz.utc)
-    calculations = KrInstance(input_name,dt_date_time.year, dt_date_time.month, dt_date_time.day,
-                             dt_date_time.hour,dt_date_time.minute,input_birthplace, location.latitude, location.longitude)
+    calculations = KrInstance(input_name,dt_date.year, dt_date.month, dt_date.day,
+                             dt_time.hour,dt_time.minute,input_birthplace, location.latitude, location.longitude)
     sun_sign = getattr(calculations.sun,"sign" )
     moon_sign = getattr(calculations.moon,"sign" )
     mercury_sign = getattr(calculations.mercury,"sign" )
